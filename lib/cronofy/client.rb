@@ -85,7 +85,7 @@ module Cronofy
     #
     # See http://www.cronofy.com/developers/api#upsert-event for reference.
     #
-    # Returns nothing.
+    # Returns the API Response.
     #
     # Raises Cronofy::CredentialsMissingError if no credentials available.
     # Raises Cronofy::AuthenticationFailureError if the access token is no
@@ -104,7 +104,6 @@ module Cronofy
       body[:end] = encode_event_time(body[:end])
 
       post("/v1/calendars/#{calendar_id}/events", body)
-      nil
     end
 
     def encode_event_time(time)
@@ -189,7 +188,7 @@ module Cronofy
     #
     # See http://www.cronofy.com/developers/api#delete-event for reference.
     #
-    # Returns nothing.
+    # Returns the API Response.
     #
     # Raises Cronofy::CredentialsMissingError if no credentials available.
     # Raises Cronofy::AuthenticationFailureError if the access token is no
@@ -203,7 +202,6 @@ module Cronofy
     # limits for the application.
     def delete_event(calendar_id, event_id)
       delete("/v1/calendars/#{calendar_id}/events", event_id: event_id)
-      nil
     end
 
     # Public: Creates a notification channel with a callback URL
@@ -252,7 +250,7 @@ module Cronofy
     #
     # See http://www.cronofy.com/developers/api#close-channel for reference.
     #
-    # Returns nothing.
+    # Returns the API Response.
     #
     # Raises Cronofy::CredentialsMissingError if no credentials available.
     # Raises Cronofy::AuthenticationFailureError if the access token is no
@@ -264,7 +262,6 @@ module Cronofy
     # limits for the application.
     def close_channel(channel_id)
       delete("/v1/channels/#{channel_id}")
-      nil
     end
 
     # Public: Retrieves the details of the account.
